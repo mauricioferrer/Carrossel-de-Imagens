@@ -1,0 +1,95 @@
+.container {
+    background-color: #f0f0f0;
+    text-align: center;
+    align-items: center;
+    display: flex;  /* Para garantir que a altura e o alinhamento funcionem corretamente */
+    justify-content: center;
+    height: 100vh;  /* Garante que o container ocupe toda a altura da tela */
+}
+
+.carousel {
+    position: relative;
+    width: 80%;
+    height: 500px;  /* Define a altura do carrossel */
+    overflow: hidden;
+    background: linear-gradient(to bottom, #f0f0f0, #e0e0e0);
+}
+
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    background-color: #f0f0f0;
+
+}
+
+.slide-img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);  /* Centraliza a imagem dentro do slide */
+    object-fit: cover;  /* Redimensiona a imagem proporcionalmente sem cortar */
+    width: 100%;  /* Garantir que a imagem não ultrapasse o tamanho do slide */
+    height: 100%;  /* Garantir que a imagem não ultrapasse a altura do slide */
+    z-index: 1;
+    mix-blend-mode: multiply;
+}
+
+.slide.active {
+    display: block;
+    width: 100%;
+}
+
+.slide h1 {
+    position: absolute;
+    top: 20%;  /* Ajusta a posição do título para ficar um pouco acima do centro da imagem */
+    left: 50%;
+    transform: translateX(-50%);  /* Centraliza o título horizontalmente */
+    color: rgba(255, 255, 255, 0.9);  /* Cor neutra e suave para o texto */
+    font-family: 'Arial', sans-serif;  /* Fonte neutra */
+    font-size: 2rem;  /* Tamanho do título */
+    font-weight: 600;  /* Peso da fonte */
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);  /* Sombra sutil para dar destaque ao texto */
+    z-index: 2;  /* Garante que o título fique sobre a imagem */
+}
+
+.prev, .next {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);  /* Centraliza os botões */
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    color: blue;
+    padding: 10px 20px;
+    border: 1px solid #eee9;
+    cursor: pointer;
+    z-index: 10;
+}
+
+.prev {
+    left: 20px;
+}
+
+.next {
+    right: 20px;
+}
+
+@keyframes toActive {
+    from {
+        top: 100%;
+        opacity: 0;
+    }
+}
+
+.slide.active img.slide-img {
+    animation: toActive 0.5s ease-in-out;
+}
+
+body {
+    background-color: #f0f0f0; /* Cor sólida para o fundo */
+}
